@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 FunctionsTheme {
-                    HomeScreen()
+                    HomeScreen(viewModel = viewModel)
                 }
             }
         }

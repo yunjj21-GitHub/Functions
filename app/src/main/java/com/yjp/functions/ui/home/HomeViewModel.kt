@@ -20,7 +20,10 @@ class HomeViewModel @Inject constructor(
 
     private val videoIds = listOf(
         "vXiBTHJI1SY",
-        "wbWudic8YkQ"
+        "wbWudic8YkQ",
+        "mSgRjI1VL_I",
+        "k-5fCBEpi4I",
+        "MA2FlDmw88o"
     )
 
     private val _videos = MutableStateFlow<List<YoutubeVideoInfo>>(emptyList())

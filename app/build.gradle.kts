@@ -49,6 +49,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -74,6 +75,10 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.gson)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.compose.foundation)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.fragment)
     ksp(libs.hilt.compiler)
