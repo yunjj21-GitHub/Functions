@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.home
+package com.yjp.functions.ui.youtube
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
@@ -28,7 +28,7 @@ import com.yjp.functions.ui.theme.FunctionsTheme
 import com.yjp.functions.util.YoutubeFormatUtil
 
 @Composable
-fun HomeVideoItem(
+fun YoutubeVideoItem(
     video: YoutubeVideoInfo,
     modifier: Modifier = Modifier,
 ) {
@@ -146,9 +146,9 @@ private fun LabeledItem(
 
 @Preview(showBackground = true)
 @Composable
-private fun HomeVideoItemPreview() {
+private fun YoutubeVideoItemPreview() {
     FunctionsTheme {
-        HomeVideoItem(
+        YoutubeVideoItem(
             video = previewYoutubeVideoInfo(),
             modifier = Modifier
                 .fillMaxWidth()

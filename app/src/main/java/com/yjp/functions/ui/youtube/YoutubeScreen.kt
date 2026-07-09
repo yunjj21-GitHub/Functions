@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.home
+package com.yjp.functions.ui.youtube
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel,
+fun YoutubeScreen(
+    viewModel: YoutubeViewModel,
     modifier: Modifier = Modifier,
 ) {
     val videos by viewModel.videos.collectAsStateWithLifecycle()
@@ -34,7 +34,7 @@ fun HomeScreen(
             items = videos,
             key = { it.videoId },
         ) { video ->
-            HomeVideoItem(
+            YoutubeVideoItem(
                 video = video,
                 modifier = Modifier
                     .fillMaxWidth()

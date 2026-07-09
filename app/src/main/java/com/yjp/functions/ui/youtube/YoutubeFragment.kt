@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.home
+package com.yjp.functions.ui.youtube
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.yjp.functions.R
-import com.yjp.functions.databinding.FragmentHomeBinding
+import com.yjp.functions.databinding.FragmentYoutubeBinding
 import com.yjp.functions.ui.theme.FunctionsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class YoutubeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: YoutubeViewModel by viewModels()
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentYoutubeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,14 +26,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_youtube, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.composeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 FunctionsTheme {
-                    HomeScreen(viewModel = viewModel)
+                    YoutubeScreen(viewModel = viewModel)
                 }
             }
         }

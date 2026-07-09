@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/youtubeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.yjp.functions.ui.home.HomeFragment"
-        android:label="@string/home" />
+        android:id="@+id/youtubeFragment"
+        android:name="com.yjp.functions.ui.youtube.YoutubeFragment"
+        android:label="@string/youtube" />
 
 </navigation>

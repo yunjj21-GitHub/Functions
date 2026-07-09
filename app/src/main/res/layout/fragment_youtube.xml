@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.yjp.functions.ui.home.HomeViewModel" />
+            type="com.yjp.functions.ui.youtube.YoutubeViewModel" />
     </data>
 
     <androidx.compose.ui.platform.ComposeView

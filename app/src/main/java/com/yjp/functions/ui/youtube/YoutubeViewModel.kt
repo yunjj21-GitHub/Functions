@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.home
+package com.yjp.functions.ui.youtube
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class YoutubeViewModel @Inject constructor(
     private val youtubeRepository: YoutubeRepository,
 ) : ViewModel() {
 
