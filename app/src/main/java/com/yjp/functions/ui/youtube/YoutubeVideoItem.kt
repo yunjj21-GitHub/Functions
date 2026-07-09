@@ -1,6 +1,7 @@
 package com.yjp.functions.ui.youtube
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -30,10 +31,11 @@ import com.yjp.functions.util.YoutubeFormatUtil
 @Composable
 fun YoutubeVideoItem(
     video: YoutubeVideoInfo,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier.clickable(onClick = onClick),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         border = BorderStroke(1.dp, Color.Black),
@@ -150,6 +152,7 @@ private fun YoutubeVideoItemPreview() {
     FunctionsTheme {
         YoutubeVideoItem(
             video = previewYoutubeVideoInfo(),
+            onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),

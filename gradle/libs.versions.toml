@@ -21,6 +21,7 @@ gson = "2.11.0"
 coil = "2.7.0"
 desugar = "2.1.4"
 composeBom = "2024.09.00"
+androidYoutubePlayer = "13.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +57,7 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
+android-youtube-player = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "androidYoutubePlayer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
