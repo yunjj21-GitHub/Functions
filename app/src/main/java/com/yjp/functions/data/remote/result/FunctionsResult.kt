@@ -1,4 +1,4 @@
-package com.yjp.functions.common.result
+package com.yjp.functions.data.remote.result
 
 sealed class FunctionsResult<out T> {
 

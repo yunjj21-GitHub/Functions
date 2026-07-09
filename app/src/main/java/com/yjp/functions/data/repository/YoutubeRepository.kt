@@ -1,7 +1,7 @@
 package com.yjp.functions.data.repository
 
 import com.yjp.functions.BuildConfig
-import com.yjp.functions.common.result.FunctionsResult
+import com.yjp.functions.data.remote.result.FunctionsResult
 import com.yjp.functions.data.model.YoutubeVideoInfo
 import com.yjp.functions.data.remote.api.YoutubeApiService
 import com.yjp.functions.data.remote.dto.YoutubeThumbnailsDto

@@ -2,10 +2,10 @@ package com.yjp.functions.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yjp.functions.common.log.FunctionsLog
-import com.yjp.functions.common.result.FunctionsResult
+import com.yjp.functions.data.remote.result.FunctionsResult
 import com.yjp.functions.data.model.YoutubeVideoInfo
 import com.yjp.functions.data.repository.YoutubeRepository
+import com.yjp.functions.util.FunctionsLog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

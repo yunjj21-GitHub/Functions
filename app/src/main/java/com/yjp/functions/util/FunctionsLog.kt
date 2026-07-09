@@ -1,4 +1,4 @@
-package com.yjp.functions.common.log
+package com.yjp.functions.util
 
 import android.util.Log
 
