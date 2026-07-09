@@ -3,6 +3,7 @@ package com.yjp.functions.ui.youtube.player
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,13 +58,25 @@ private fun YoutubePlayerScreenContent(
         modifier = modifier
             .fillMaxSize()
             .windowInsetsPadding(WindowInsets.safeDrawing),
-        contentAlignment = Alignment.Center,
     ) {
-        player(
-            Modifier
-                .fillMaxWidth()
-                .aspectRatio(16f / 9f),
-        )
+        Column(modifier = Modifier.fillMaxSize()) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center,
+            ) {
+                player(
+                    Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16f / 9f),
+                )
+            }
+
+            OpenInYoutubeAppButton(
+                modifier = Modifier.padding(10.dp)
+            )
+        }
 
         IconButton(
             onClick = onBack,
@@ -76,6 +91,26 @@ private fun YoutubePlayerScreenContent(
                 modifier = Modifier.size(24.dp),
             )
         }
+    }
+}
+
+@Composable
+private fun OpenInYoutubeAppButton(
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color.Black)
+            .padding(vertical = 20.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = "YouTube 앱으로 재생하기",
+            color = Color.White,
+            style = MaterialTheme.typography.bodyLarge,
+        )
     }
 }
 
