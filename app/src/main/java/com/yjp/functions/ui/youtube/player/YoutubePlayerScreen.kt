@@ -40,9 +40,7 @@ fun YoutubePlayerScreen(
     BackHandler(onBack = onBack)
 
     Box(
-        modifier = modifier
-            .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing),
+        modifier = modifier.fillMaxSize(),
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
             Box(
