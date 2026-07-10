@@ -21,6 +21,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.yjp.functions.ui.pdf.PdfScreen
 import com.yjp.functions.ui.youtube.YoutubeScreen
 import com.yjp.functions.ui.youtube.YoutubeViewModel
 import com.yjp.functions.ui.youtube.player.YoutubePlayerScreen
@@ -83,7 +84,7 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Pdf.route
             ) {
-                PlaceholderScreen(title = "PDF")
+                PdfScreen(modifier = Modifier.fillMaxSize())
             }
 
             composable(
