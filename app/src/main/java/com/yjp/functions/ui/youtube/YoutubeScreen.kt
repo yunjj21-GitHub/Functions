@@ -13,24 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yjp.functions.ui.youtube.player.YoutubePlayerScreen
 
 @Composable
 fun YoutubeScreen(
     viewModel: YoutubeViewModel,
+    onVideoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val videos by viewModel.videos.collectAsStateWithLifecycle()
-    val playingVideoId by viewModel.playingVideoId.collectAsStateWithLifecycle()
-
-    if (playingVideoId != null) {
-        YoutubePlayerScreen(
-            videoId = playingVideoId!!,
-            onBack = viewModel::stopPlayback,
-            modifier = modifier,
-        )
-        return
-    }
 
     LazyColumn(
         modifier = modifier.fillMaxSize(),
@@ -42,7 +32,7 @@ fun YoutubeScreen(
         ) { video ->
             YoutubeVideoItem(
                 video = video,
-                onClick = { viewModel.playVideo(video.videoId) },
+                onClick = { onVideoClick(video.videoId) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),

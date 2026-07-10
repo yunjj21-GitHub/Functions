@@ -29,19 +29,8 @@ class YoutubeViewModel @Inject constructor(
     private val _videos = MutableStateFlow<List<YoutubeVideoInfo>>(emptyList())
     val videos: StateFlow<List<YoutubeVideoInfo>> = _videos.asStateFlow()
 
-    private val _playingVideoId = MutableStateFlow<String?>(null)
-    val playingVideoId: StateFlow<String?> = _playingVideoId.asStateFlow()
-
     init {
         loadVideos()
-    }
-
-    fun playVideo(videoId: String) {
-        _playingVideoId.value = videoId
-    }
-
-    fun stopPlayback() {
-        _playingVideoId.value = null
     }
 
     fun loadVideos() {
