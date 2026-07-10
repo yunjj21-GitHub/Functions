@@ -2,6 +2,7 @@ package com.yjp.functions.ui.youtube.player
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -22,11 +23,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yjp.functions.R
 import com.yjp.functions.ui.theme.FunctionsTheme
+import com.yjp.functions.util.YoutubeIntentUtil
 
 @Composable
 fun YoutubePlayerScreen(
@@ -36,24 +39,6 @@ fun YoutubePlayerScreen(
 ) {
     BackHandler(onBack = onBack)
 
-    YoutubePlayerScreenContent(
-        onBack = onBack,
-        modifier = modifier,
-        player = { playerModifier ->
-            YoutubePlayer(
-                videoId = videoId,
-                modifier = playerModifier,
-            )
-        },
-    )
-}
-
-@Composable
-private fun YoutubePlayerScreenContent(
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-    player: @Composable (Modifier) -> Unit,
-) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -66,15 +51,17 @@ private fun YoutubePlayerScreenContent(
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center,
             ) {
-                player(
-                    Modifier
+                YoutubePlayer(
+                    videoId = videoId,
+                    modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(16f / 9f),
                 )
             }
 
             OpenInYoutubeAppButton(
-                modifier = Modifier.padding(10.dp)
+                videoId = videoId,
+                modifier = Modifier.padding(10.dp),
             )
         }
 
@@ -96,13 +83,17 @@ private fun YoutubePlayerScreenContent(
 
 @Composable
 private fun OpenInYoutubeAppButton(
+    videoId: String,
     modifier: Modifier = Modifier,
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
             .background(Color.Black)
+            .clickable { YoutubeIntentUtil.openYoutubeApp(context, videoId) }
             .padding(vertical = 20.dp),
         contentAlignment = Alignment.Center,
     ) {
@@ -118,20 +109,52 @@ private fun OpenInYoutubeAppButton(
 @Composable
 private fun YoutubePlayerScreenPreview() {
     FunctionsTheme {
-        YoutubePlayerScreenContent(
-            onBack = {},
-            player = { modifier ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing),
+        ) {
+            Column(modifier = Modifier.fillMaxSize()) {
                 Box(
-                    modifier = modifier.background(Color(0xFF212121)),
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(
-                        text = "YouTube Player",
-                        color = Color.White,
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(16f / 9f)
+                            .background(Color(0xFF212121)),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = "YouTube Player",
+                            color = Color.White,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }
                 }
-            },
-        )
+
+                OpenInYoutubeAppButton(
+                    videoId = "",
+                    modifier = Modifier.padding(10.dp),
+                )
+            }
+
+            IconButton(
+                onClick = {},
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(start = 8.dp, top = 8.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_back),
+                    contentDescription = "뒤로",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(24.dp),
+                )
+            }
+        }
     }
 }
