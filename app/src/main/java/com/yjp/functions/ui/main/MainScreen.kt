@@ -84,7 +84,10 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Pdf.route
             ) {
-                PdfScreen(modifier = Modifier.fillMaxSize())
+                PdfScreen(
+                    viewModel = hiltViewModel(),
+                    modifier = Modifier.fillMaxSize(),
+                )
             }
 
             composable(

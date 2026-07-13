@@ -2,6 +2,7 @@ package com.yjp.functions.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.yjp.functions.data.remote.api.PdfApiService
 import com.yjp.functions.data.remote.api.YoutubeApiService
 import com.yjp.functions.data.remote.interceptor.FunctionsNetInterceptor
 import dagger.Module
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -18,6 +20,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3/"
+    private const val PDF_BASE_URL = "https://www.kobaco.co.kr/"
 
     @Provides
     @Singleton
@@ -39,7 +42,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
+    @Named("youtube")
+    fun provideYoutubeRetrofit(
         okHttpClient: OkHttpClient,
         gson: Gson,
     ): Retrofit {
@@ -52,7 +56,29 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideYoutubeApiService(retrofit: Retrofit): YoutubeApiService {
+    @Named("pdf")
+    fun providePdfRetrofit(
+        okHttpClient: OkHttpClient,
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(PDF_BASE_URL)
+            .client(okHttpClient)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideYoutubeApiService(
+        @Named("youtube") retrofit: Retrofit,
+    ): YoutubeApiService {
         return retrofit.create(YoutubeApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePdfApiService(
+        @Named("pdf") retrofit: Retrofit,
+    ): PdfApiService {
+        return retrofit.create(PdfApiService::class.java)
     }
 }
