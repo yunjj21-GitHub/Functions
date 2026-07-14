@@ -93,7 +93,7 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Image.route
             ) {
-                PlaceholderScreen(title = "Image")
+                PlaceholderScreen(title = "AppPush")
             }
 
             composable(

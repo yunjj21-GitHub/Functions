@@ -7,7 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -60,10 +59,11 @@ fun PdfScreen(
         }
     }
 
-    Column(modifier = modifier.fillMaxSize()) {
-        // 위 여백 — 버튼이 화면 중앙에 오도록 맞춤
-        Spacer(modifier = Modifier.weight(1f))
-
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(top = 10.dp),
+    ) {
         PdfActionButton(
             text = "PDF 다운로드하기",
             onClick = { viewModel.downloadPdf(context) },
@@ -74,8 +74,12 @@ fun PdfScreen(
             onClick = { pickPdfLauncher.launch(arrayOf("application/pdf")) },
             modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
         )
+        PdfActionButton(
+            text = "WebView 통해 PDF 다운로드하기",
+            modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
+        )
 
-        // 아래 영역 — 첨부 목록만 스크롤 (버튼 위치는 그대로)
+        // 첨부 목록 — 버튼 바로 아래에서 스크롤
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -149,14 +153,21 @@ private fun PdfActionButton(
 @Composable
 private fun PdfScreenPreview() {
     FunctionsTheme {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Spacer(modifier = Modifier.weight(1f))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 10.dp),
+        ) {
             PdfActionButton(
                 text = "PDF 다운로드하기",
                 modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
             )
             PdfActionButton(
                 text = "PDF 업로드하기",
+                modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
+            )
+            PdfActionButton(
+                text = "WebView 통해 PDF 다운로드하기",
                 modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
             )
             Box(
@@ -170,6 +181,10 @@ private fun PdfScreenPreview() {
                         "보고서.pdf",
                         "계약서.pdf",
                         "안내문.pdf",
+                        "[샘플] 광고1번지.pdf",
+                        "보고서.pdf",
+                        "계약서.pdf",
+                        "안내문.pdf"
                     ),
                     modifier = Modifier
                         .fillMaxSize()

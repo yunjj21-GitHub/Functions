@@ -28,9 +28,9 @@ enum class MainDestination(
         contentDescription = "PDF",
     ),
     Image(
-        route = "image",
-        iconRes = R.drawable.ic_image,
-        contentDescription = "Image",
+        route = "apppush",
+        iconRes = R.drawable.ic_app_push,
+        contentDescription = "AppPush",
     ),
     Fingerprint(
         route = "fingerprint",
