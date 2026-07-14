@@ -22,6 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.yjp.functions.ui.pdf.PdfScreen
+import com.yjp.functions.ui.webview.WebViewScreen
+import com.yjp.functions.ui.webview.WebViewUrls
 import com.yjp.functions.ui.youtube.YoutubeScreen
 import com.yjp.functions.ui.youtube.YoutubeViewModel
 import com.yjp.functions.ui.youtube.player.YoutubePlayerScreen
@@ -86,6 +88,7 @@ fun MainScreen() {
             ) {
                 PdfScreen(
                     viewModel = hiltViewModel(),
+                    onWebViewClick = { navController.navigate("webview") },
                     modifier = Modifier.fillMaxSize(),
                 )
             }
@@ -114,6 +117,14 @@ fun MainScreen() {
                 YoutubePlayerScreen(
                     videoId = videoId,
                     onBack = { navController.popBackStack() }, // 뒤로가면 목록으로 복귀함
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+
+            composable(route = "webview") {
+                WebViewScreen(
+                    url = WebViewUrls.DATA_GO_KR_PDF,
+                    onBack = { navController.popBackStack() },
                     modifier = Modifier.fillMaxSize(),
                 )
             }

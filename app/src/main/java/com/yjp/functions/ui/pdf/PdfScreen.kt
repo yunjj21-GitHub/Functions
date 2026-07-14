@@ -32,6 +32,7 @@ import com.yjp.functions.ui.theme.FunctionsTheme
 @Composable
 fun PdfScreen(
     viewModel: PdfViewModel,
+    onWebViewClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -76,6 +77,7 @@ fun PdfScreen(
         )
         PdfActionButton(
             text = "WebView 통해 PDF 다운로드하기",
+            onClick = onWebViewClick,
             modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
         )
 
