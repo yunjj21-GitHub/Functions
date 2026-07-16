@@ -57,8 +57,8 @@ keystore.properties
 .externalNativeBuild/
 .cxx/
 
-# Google Services (uncomment if you do not want to commit Firebase config)
-# google-services.json
+# Google Services (Firebase config - do not commit)
+google-services.json
 
 # Freeline
 freeline.py
