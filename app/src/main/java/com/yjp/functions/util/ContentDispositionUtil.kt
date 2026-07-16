@@ -20,14 +20,27 @@ object ContentDispositionUtil {
         }
 
         FILENAME_REGEX.find(contentDisposition)?.groupValues?.get(1)?.let { fileName ->
-            return fileName.trim().trim('"')
+            return decodeFileName(fileName.trim().trim('"'))
         }
 
         return null
     }
 
+    /**
+     * 파일명에 URL 인코딩(%EB%85%84 등)이 있으면 한글로 디코딩함
+     *
+     * 예: 2025%EB%85%84 공공데이터... → 2025년 공공데이터...
+     */
+    fun decodeFileName(fileName: String): String {
+        if (!fileName.contains('%')) return fileName
+
+        return runCatching {
+            URLDecoder.decode(fileName, Charsets.UTF_8.name())
+        }.getOrDefault(fileName)
+    }
+
     fun sanitizeFileName(fileName: String): String {
-        return fileName
+        return decodeFileName(fileName)
             .replace(INVALID_FILE_NAME_CHARS, "_")
             .trim()
             .ifBlank { FALLBACK_FILE_NAME }
