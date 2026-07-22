@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.fcm
+package com.yjp.functions.ui.apppush
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import com.yjp.functions.ui.theme.FunctionsTheme
 
 @Composable
 fun FcmScreen(
-    viewModel: FcmViewModel,
+    viewModel: AppPushViewModel,
     modifier: Modifier = Modifier,
 ) {
     val token by viewModel.token.collectAsStateWithLifecycle()

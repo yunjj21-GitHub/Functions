@@ -1,4 +1,4 @@
-package com.yjp.functions.ui.fcm
+package com.yjp.functions.ui.apppush
 
 import androidx.lifecycle.ViewModel
 import com.yjp.functions.util.FcmUtil
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
-class FcmViewModel @Inject constructor() : ViewModel() {
+class AppPushViewModel @Inject constructor() : ViewModel() {
 
     private val _token = MutableStateFlow<String?>(null)
     val token: StateFlow<String?> = _token.asStateFlow()

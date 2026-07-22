@@ -21,7 +21,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.yjp.functions.ui.fcm.FcmScreen
+import com.yjp.functions.ui.apppush.FcmScreen
 import com.yjp.functions.ui.pdf.PdfScreen
 import com.yjp.functions.ui.webview.WebViewScreen
 import com.yjp.functions.ui.webview.WebViewUrls
