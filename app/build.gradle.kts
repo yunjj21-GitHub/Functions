@@ -16,6 +16,9 @@ val localProperties = Properties().apply {
     }
 }
 
+// FCM 알림 채널 ID (매니페스트 meta-data / BuildConfig 공통)
+val fcmNotificationChannelId = "functions_fcm_channel"
+
 android {
     namespace = "com.yjp.functions"
     compileSdk {
@@ -34,6 +37,8 @@ android {
             "YOUTUBE_API_KEY",
             "\"${localProperties.getProperty("YOUTUBE_API_KEY", "")}\""
         )
+        buildConfigField("String", "FCM_NOTIFICATION_CHANNEL_ID", "\"$fcmNotificationChannelId\"")
+        manifestPlaceholders["fcmNotificationChannelId"] = fcmNotificationChannelId
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
