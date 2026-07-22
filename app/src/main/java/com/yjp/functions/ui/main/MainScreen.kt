@@ -21,6 +21,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.yjp.functions.ui.fcm.FcmScreen
 import com.yjp.functions.ui.pdf.PdfScreen
 import com.yjp.functions.ui.webview.WebViewScreen
 import com.yjp.functions.ui.webview.WebViewUrls
@@ -96,7 +97,10 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Image.route
             ) {
-                PlaceholderScreen(title = "AppPush")
+                FcmScreen(
+                    viewModel = hiltViewModel(),
+                    modifier = Modifier.fillMaxSize(),
+                )
             }
 
             composable(
