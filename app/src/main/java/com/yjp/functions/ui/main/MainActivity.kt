@@ -5,6 +5,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.yjp.functions.ui.theme.FunctionsTheme
+import com.yjp.functions.util.FcmUtil
+import com.yjp.functions.util.FunctionsLog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,5 +20,7 @@ class MainActivity : AppCompatActivity() {
                 MainScreen()
             }
         }
+
+        FcmUtil.getToken()
     }
 }
