@@ -38,6 +38,7 @@ android {
             "\"${localProperties.getProperty("YOUTUBE_API_KEY", "")}\""
         )
         buildConfigField("String", "FCM_NOTIFICATION_CHANNEL_ID", "\"$fcmNotificationChannelId\"")
+        buildConfigField("String", "FCM_PROJECT_ID", "\"functions-ed24f\"")
         manifestPlaceholders["fcmNotificationChannelId"] = fcmNotificationChannelId
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

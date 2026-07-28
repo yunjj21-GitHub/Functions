@@ -86,6 +86,7 @@ lint/tmp/
 
 # Secrets
 secrets.properties
+**/fcm-service-account.json
 
 # OS-specific files
 .DS_Store
