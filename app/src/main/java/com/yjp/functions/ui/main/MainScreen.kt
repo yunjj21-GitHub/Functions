@@ -1,17 +1,13 @@
 package com.yjp.functions.ui.main
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -22,6 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.yjp.functions.ui.apppush.FcmScreen
+import com.yjp.functions.ui.fingerprint.FingerprintScreen
 import com.yjp.functions.ui.pdf.PdfScreen
 import com.yjp.functions.ui.webview.WebViewScreen
 import com.yjp.functions.ui.webview.WebViewUrls
@@ -106,7 +103,7 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Fingerprint.route
             ) {
-                PlaceholderScreen(title = "Fingerprint")
+                FingerprintScreen(modifier = Modifier.fillMaxSize())
             }
 
             // 2-Depth 이상 화면 (하단 네비게이션바 미노출)
@@ -133,22 +130,5 @@ fun MainScreen() {
                 )
             }
         }
-    }
-}
-
-/** 아직 만들지 않은 탭 화면용 임시 UI */
-@Composable
-private fun PlaceholderScreen(
-    title: String,
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge,
-        )
     }
 }
