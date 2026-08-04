@@ -1,6 +1,8 @@
 package com.yjp.functions.ui.fingerprint
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,19 +14,41 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yjp.functions.R
 import com.yjp.functions.ui.theme.FunctionsTheme
-
 @Composable
 fun FingerprintScreen(
-    authResult: String = "미인증",
+    viewModel: FingerprintViewModel,
+    modifier: Modifier = Modifier,
+) {
+    val context = LocalContext.current
+    val authResult by viewModel.authResult.collectAsStateWithLifecycle()
+
+    FingerprintScreenContent(
+        authResult = authResult,
+        onFingerprintClick = {
+            (context as? FragmentActivity)?.let(viewModel::authenticate)
+        },
+        modifier = modifier,
+    )
+}
+
+@Composable
+private fun FingerprintScreenContent(
+    authResult: String,
+    onFingerprintClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -37,7 +61,13 @@ fun FingerprintScreen(
         Image(
             painter = painterResource(R.drawable.ic_fingerprint),
             contentDescription = "Fingerprint",
-            modifier = Modifier.size(72.dp),
+            modifier = Modifier
+                .size(72.dp)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onFingerprintClick,
+                ),
             contentScale = ContentScale.Fit,
         )
 
@@ -56,6 +86,9 @@ fun FingerprintScreen(
 @Composable
 private fun FingerprintScreenPreview() {
     FunctionsTheme {
-        FingerprintScreen(authResult = "미인증")
+        FingerprintScreenContent(
+            authResult = "미인증",
+            onFingerprintClick = {},
+        )
     }
 }

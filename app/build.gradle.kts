@@ -92,6 +92,7 @@ dependencies {
     implementation(libs.android.youtube.player)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.biometric)
     coreLibraryDesugaring(libs.desugar.jdk.libs)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)

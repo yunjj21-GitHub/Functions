@@ -103,7 +103,10 @@ fun MainScreen() {
             composable(
                 route = MainDestination.Fingerprint.route
             ) {
-                FingerprintScreen(modifier = Modifier.fillMaxSize())
+                FingerprintScreen(
+                    viewModel = hiltViewModel(),
+                    modifier = Modifier.fillMaxSize(),
+                )
             }
 
             // 2-Depth 이상 화면 (하단 네비게이션바 미노출)
